@@ -1,0 +1,12 @@
+#!/bin/sh
+intern=37D8832A-2D66-02CA-B9F7-8F30A301B230
+extern=AEF05A53-05D9-6959-0857-D6964E3302DB
+
+if displayplacer list | grep "^Persistent screen id: $extern$"; then
+    displayplacer "id:$extern res:2560x1440 hz:120 color_depth:7 enabled:true scaling:off origin:(0,0) degree:0" "id:1 enabled:false"
+    osascript -e "set volume output muted false"
+    osascript -e "set volume output volume 20"
+else
+    displayplacer "id:$intern res:1440x900 hz:60 color_depth:8 enabled:true scaling:on origin:(0,0) degree:0"
+    osascript -e "set volume output muted true"
+fi
